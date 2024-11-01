@@ -86,7 +86,8 @@ const handleLogin =()=>{
 
 <style scoped>
 .login-card {
-  width: 300px;
+  width: 400px;
+  height: 400px;
   margin: 27px auto;
   padding: 20px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
