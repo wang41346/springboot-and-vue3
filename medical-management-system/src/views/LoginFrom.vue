@@ -72,7 +72,7 @@ const handleLogin =()=>{
 
     loading.value=true
     store
-    .dispatch('views/LoginFrom',loginForm.value)
+    .dispatch('user/login',loginForm.value)
     .then(() => {
       loading.value =false
     })

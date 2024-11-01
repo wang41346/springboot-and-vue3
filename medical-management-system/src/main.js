@@ -6,5 +6,5 @@ import store from './store'
 
 const app = createApp(App)
 app.use(ElementPlus)
-app.mount('#app')
 app.use(store)
+app.mount('#app')

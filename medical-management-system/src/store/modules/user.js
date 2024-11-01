@@ -9,8 +9,9 @@ export default {
     login(context, userInfo) {  
       const { username, password } = userInfo;  
       // 使用 CryptoJS 的 MD5 方法来哈希密码  
-      const hashedPassword = CryptoJS.MD5(password).toString();  
-  
+      const hashedPassword = CryptoJS.MD5(password).toString();
+      console.log(username, password)
+
       return new Promise((resolve, reject) => {  
         login({  
           username,  
