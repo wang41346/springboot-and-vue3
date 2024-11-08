@@ -16,7 +16,6 @@ const routes = [
   
 ]
 
-router.push('/Layout')
 
 const router = createRouter({
   history: createWebHashHistory(),

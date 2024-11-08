@@ -1,3 +1,4 @@
+import store from '@/store'
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
 
@@ -25,3 +26,17 @@ service.interceptors.response.use(
   
 )
 export default service
+//请求拦截器
+service.interceptors.request.use(
+  config=>{
+    //同意注入token
+    if(store.getters.token){
+      //如何token存在 注入token
+      config.headers.Authorization =`Bearer ${store.getters.token}`
+    }
+    return config
+  },
+  error =>{
+    return Promise.reject(error)
+  }
+)

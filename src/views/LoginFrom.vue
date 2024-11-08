@@ -39,7 +39,7 @@ import { ref } from 'vue'
 import { ElForm } from 'element-plus'
 import { User, Lock,} from '@element-plus/icons-vue'
 import { validatePassword } from './login';
-import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
 
 const loginForm = ref({
   username: 'super-admin',
@@ -63,23 +63,17 @@ const rules = ref({
 })
 
 //登录动作处理
-const loading =ref(false)
+const router =useRouter()
 const loginFormRef =ref(null)
-const store = useStore()
 const handleLogin =()=>{
-  loginFormRef.value.validate(valid =>{
-    if(!valid) return
-
-    loading.value=true
-    store
-    .dispatch('views/LoginFrom',loginForm.value)
-    .then(() => {
-      loading.value =false
-    })
-    .catch(err =>{
-      console.log(err)
-      loading.value =false
-    })
+  loginFormRef.value.validate((valid) => {
+    if (valid) {
+      console.log('登录信息:', loginForm.value)
+      router.push('/')
+    } else {
+      console.log('表单验证失败') 
+      return false
+    }
   })
 }
 </script>
