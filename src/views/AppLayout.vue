@@ -18,13 +18,14 @@
 </template>
 
 <script setup>
-import Navbar from '@/components/Navbar.vue';
-import Sidebar from '@/components/Sidebar.vue';
+import Navbar from '@/components/AppNavbar.vue';
+import Sidebar from '@/components/AppSidebar.vue';
 import AppMain from '@/components/AppMain.vue';
+import variables from '@/styles/variables.module.scss'; // 导入 SCSS 变量
 </script>
 <style lang="scss" scoped>
 @import '~@/styles/mixin.scss';
-@import '~@/styles/variables.scss';
+@import '~@/styles/variables.module.scss';
 
 .app-wrapper{
   @include clearfix;
@@ -38,6 +39,6 @@ import AppMain from '@/components/AppMain.vue';
   top:0;
   right: 0;
   z-index: 9;
-  width: calc(100%- #{$sideBarWidth});
+  width: calc(100% - #{$sideBarWidth});
 }
 </style>

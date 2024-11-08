@@ -69,7 +69,7 @@ const handleLogin =()=>{
   loginFormRef.value.validate((valid) => {
     if (valid) {
       console.log('登录信息:', loginForm.value)
-      router.push('/')
+      router.push('/home')
     } else {
       console.log('表单验证失败') 
       return false

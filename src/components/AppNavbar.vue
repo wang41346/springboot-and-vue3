@@ -1,5 +1,7 @@
 <template>
-  
+  <div class="app-main">
+    Navbar
+  </div>
 </template>
 
 <script>
