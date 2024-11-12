@@ -1,4 +1,5 @@
-<template>
+<template class="backgroud">
+  <div class="backgroud">
   <el-card class="login-card">
     <h2 class="login-title">登录</h2>
     <el-form :model="loginForm" :rules="rules" ref="loginFormRef" label-position="top">
@@ -32,6 +33,7 @@
       </el-form-item>
     </el-form>
   </el-card>
+</div>
 </template>
 
 <script setup>
@@ -69,7 +71,7 @@ const handleLogin =()=>{
   loginFormRef.value.validate((valid) => {
     if (valid) {
       console.log('登录信息:', loginForm.value)
-      router.push('/')
+      router.push('/Home')
     } else {
       console.log('表单验证失败') 
       return false
@@ -79,6 +81,16 @@ const handleLogin =()=>{
 </script>
 
 <style scoped>
+.backgroud{
+  display: flex;  
+  justify-content: center;  
+  align-items: center;      
+  height: 100vh;
+  background-image: url('../assets/素材1-登录背景.jpg');
+  background-size: cover;
+  background-position: center;   
+  background-repeat: no-repeat;
+}
 .login-card {
   width: 400px;
   height: 400px;

@@ -4,7 +4,7 @@
     <sidebar
     id="guide-siderbar"
     class="sidebar-container"
-    :style="{ backgroundColor:variables.menuBg }"
+    :style="{ backgroundColor: variables.menuBg}"
     ></sidebar>
     <div class="main-container">
       <div class="fixed-header">
@@ -18,6 +18,7 @@
 </template>
 
 <script setup>
+import variables from '@/styles/variables.scss';
 import Navbar from '@/components/Navbar.vue';
 import Sidebar from '@/components/Sidebar.vue';
 import AppMain from '@/components/AppMain.vue';
@@ -25,7 +26,6 @@ import AppMain from '@/components/AppMain.vue';
 <style lang="scss" scoped>
 @import '~@/styles/mixin.scss';
 @import '~@/styles/variables.scss';
-
 .app-wrapper{
   @include clearfix;
   position: relative;
@@ -38,6 +38,6 @@ import AppMain from '@/components/AppMain.vue';
   top:0;
   right: 0;
   z-index: 9;
-  width: calc(100%- #{$sideBarWidth});
+  width: calc(100% - #{$sideBarWidth});
 }
 </style>

@@ -1,6 +1,8 @@
 import { getUserInfo, login } from '@/api/sys';
 import { TOKEN } from '@/constant';
-import { setItem, getItem } from '@/utils/storage';
+import router from '@/router';
+import { setTimeStamp } from '@/utils/auth';
+import { setItem, getItem, removeAllItem } from '@/utils/storage';
 import CryptoJS from 'crypto-js';
 
 export default {
@@ -22,7 +24,6 @@ export default {
     async login({ commit }, userInfo) {
       const { username, password } = userInfo;
       const hashedPassword = CryptoJS.MD5(password).toString();
-
       try {
         const response = await login({
           username,
@@ -32,6 +33,8 @@ export default {
         // 假设响应数据结构为 { data: { data: { token: '...' } } }
         const token = response.data.data.token;
         commit('setToken', token);
+
+        await setTimeStamp();
       } catch (error) {
         // 处理登录错误
         console.error('Login failed:', error);
@@ -60,6 +63,12 @@ export default {
         console.error('Failed to get user info:', error);
         throw error; // 重新抛出错误以便上层调用者可以处理
       }
+    },
+    logout(){
+      this.commit('user/setToken', '')
+      this.commit('user/setUserInfo', {})
+      removeAllItem()
+      router.push('/')
     }
   }
 };
