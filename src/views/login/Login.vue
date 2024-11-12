@@ -71,7 +71,7 @@ const handleLogin =()=>{
   loginFormRef.value.validate((valid) => {
     if (valid) {
       console.log('登录信息:', loginForm.value)
-      router.push('/Home')
+      router.push('/')
     } else {
       console.log('表单验证失败') 
       return false
@@ -86,7 +86,7 @@ const handleLogin =()=>{
   justify-content: center;  
   align-items: center;      
   height: 100vh;
-  background-image: url('../assets/素材1-登录背景.jpg');
+  background-image: url('/src/assets/素材1-登录背景.jpg');
   background-size: cover;
   background-position: center;   
   background-repeat: no-repeat;

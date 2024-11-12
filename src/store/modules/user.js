@@ -68,7 +68,7 @@ export default {
       this.commit('user/setToken', '')
       this.commit('user/setUserInfo', {})
       removeAllItem()
-      router.push('/')
+      router.push('/login')
     }
   }
 };

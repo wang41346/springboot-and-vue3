@@ -1,12 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Layout from '@/views/Layout.vue'
+import Layout from '@/views/layout/Layout.vue'
 
-
-const router = createRouter({
-  history: createWebHashHistory(),
-  routes:[privateRoutes, publicRoutes]
-})
-export default router
 
 /**
  * [
@@ -49,7 +43,7 @@ export default router
 //私有路由表
 const privateRoutes = [
   {
-    path:'user',
+    path:'/user',
     component:Layout,
     redirect:'/user/manage',
       meta: {
@@ -59,7 +53,7 @@ const privateRoutes = [
       children:[
         {
           path:'/user/manage',
-          component: () => import('@/views/user-manage'),
+          component: () => import('@/views/profile/user-manage'),
           meta: {
             title:'userManage',
             icon: 'personnel-manage'
@@ -67,7 +61,7 @@ const privateRoutes = [
         },
         {
           path:'/user/role',
-          component: () => import('@/views/role-list'),
+          component: () => import('@/views/profile/role-list'),
           meta: {
             title:'roleList',
             icon: 'role'
@@ -75,7 +69,7 @@ const privateRoutes = [
         },
         {
           path:'/user/permission',
-          component: () => import('@/views/permission-list'),
+          component: () => import('@/views/profile/permission-list'),
           meta: {
             title:'permissionList',
             icon: 'permission'
@@ -84,7 +78,7 @@ const privateRoutes = [
         {
           path:'/user/info/:id',
           name:'userInfo',
-          component: () => import('@/views/user-info'),
+          component: () => import('@/views/profile/user-info'),
           meta: {
             title:'userInfo'
           }
@@ -92,7 +86,7 @@ const privateRoutes = [
         {
           path:'/user/import',
           name:'import',
-          component: () => import('@/views/import'),
+          component: () => import('@/views/profile/import'),
           meta: {
             title:'excelImport'
           }
@@ -110,7 +104,7 @@ const privateRoutes = [
     children:[
       {
         path:'/article/ranking',
-        component: () => import('@/views/Article-Ranking.vue'),
+        component: () => import('@/views/article/Article-Ranking.vue'),
         meta:{
           title:'articleRanking',
           icon:'article-ranking'
@@ -118,14 +112,14 @@ const privateRoutes = [
       },
       {
         path:'/article/:id',
-        component: () => import('@/views/Article-Detail.vue'),
+        component: () => import('@/views/article/Article-Detail.vue'),
         meta: {
           title:'articleDetail'
         }
       },
       {
         path:'/article/create',
-        component: () => import('@/views/Article-Create.vue'),
+        component: () => import('@/views/article/Article-Create.vue'),
         meta: {
           title:'articleCreate',
           icon:'article-create'
@@ -133,7 +127,7 @@ const privateRoutes = [
       },
       {
         path:'',
-        component: () => import('@/views/Article-Create.vue'),
+        component: () => import('@/views/article/Article-Create.vue'),
         meta: {
           title:'articleEditor',
         }
@@ -145,18 +139,18 @@ const privateRoutes = [
 //公开路由表
 const publicRoutes = [
   {
-    path: '/login',
-    component: () => import('@/views/Login.vue')
+    path: '/',
+    component: () => import('@/views/login/Login.vue')
   },
   {
-    path: '/',
+    path: '/layout',
     component: Layout,
     redirect: '/profile',
     children: [
       {
         path: '/profile',
         name: 'profile',
-        component: () => import('@/views/Profile.vue'),
+        component: () => import('@/views/profile/Profile.vue'),
         meta: {
           title: 'profile',
           icon: 'el-icon-user'
@@ -175,3 +169,10 @@ const publicRoutes = [
     ]
   }
 ]
+
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes:[privateRoutes, publicRoutes]
+})
+export default router
+
