@@ -139,11 +139,11 @@ const privateRoutes = [
 //公开路由表
 const publicRoutes = [
   {
-    path: '/',
+    path: '/login',
     component: () => import('@/views/login/Login.vue')
   },
   {
-    path: '/layout',
+    path: '/',
     component: Layout,
     redirect: '/profile',
     children: [
@@ -172,7 +172,7 @@ const publicRoutes = [
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes:[privateRoutes, publicRoutes]
+  routes:[...privateRoutes, ...publicRoutes]
 })
 export default router
 

@@ -1,34 +1,39 @@
 <template>
   <!-- 一级menu菜单 -->
    <el-menu
+   :background-color="$store.getters.cssVar.menuBg"
+   :text-color="$store.getters.cssVar.menuText"
+   :active-text-color="$store.getters.cssVar.menuActiveText"
    :unique-opened="true"
-   default-active="2"
-   background-color="#545c46"
-   text-color="#fff"
-   active-text-color="#ffd04b"
    >
-   <!-- 子集menu菜单 -->
-    <el-sub-menu index="1">
-      <template #title>
-        <i class="el-icon-location"></i>
-        <span>导航一</span>
-      </template>
-      <el-menu-item index="1-1">选项一</el-menu-item>
-      <el-menu-item index="1-2">选项二</el-menu-item>
-    </el-sub-menu>
-    <!-- 具体菜单项 -->
-     <el-menu-item index="4">
-      <i class="el-icon-setting"></i>
-      <template #title>导航四</template>
-     </el-menu-item>
+   <sidebar-item 
+   v-for="item in routes"
+   :key="item.path"
+   :route="item"
+   router
+   :default-active="activeMenu"
+   ></sidebar-item>
    </el-menu>
 </template>
 
 <script setup>
+import { filterRouters,gengerateMenus } from '@/utils/route';
+import {  computed } from 'vue';
 import { useRouter } from 'vue-router'
 
 const router =useRouter()
-console.log(router.getRoutes())
+const routes =computed(() => {
+  const filterRoutes = filterRouters(router.getRoutes())
+  return gengerateMenus(filterRoutes)
+})
+console.log(JSON.stringify(routes.value))
+
+//高亮menu的方法
+const route = useRouter()
+const activeMenu =computed(() => {
+  const {path} =route
+  return path
+})
 </script>
 
 <style>

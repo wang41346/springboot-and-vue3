@@ -11,7 +11,7 @@
           <i class="el-icon-s-tools"></i>
         </div>
         <template #dropdown>
-          <router-link to="/Home">
+          <router-link to="/">
           <el-dropdown-item>首页</el-dropdown-item>
         </router-link>
         <a target="_blank" href="">
@@ -39,7 +39,7 @@ import { useStore } from 'vuex';
   height: 50px;
   overflow: hidden;
   position: relative;
-  background-color: #90ee90;
+  background-color: #fff;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 }
 

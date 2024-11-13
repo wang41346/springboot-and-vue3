@@ -7,7 +7,10 @@ module.exports = defineConfig({
        symlinks: false,
        alias: {
          vue: path.resolve("./node_modules/vue"),
-       }
+       },
+       fallback: {
+        "path": require.resolve("path-browserify")
+      }
       }
     }
 })
